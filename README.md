@@ -7,7 +7,7 @@ __Demo__
 ![](20181203_182931.gif)
 
 
-__``scaling-recyclerview ``` developed with Kotlin and AndroidX.__
+__scaling-recyclerview developed with Kotlin and AndroidX.__
 
 __Note:__ for use it you most migrate your project to [AndroidX](https://developer.android.com/jetpack/androidx/migrate).
 
