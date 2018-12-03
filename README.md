@@ -18,7 +18,7 @@ __you can add snap feature to your S.R.V. with setSnap(true)__
 
 ## How to add?
 
-First of all change build.gradle(project), add below maven
+First of all change ```build.gradle(project)```, add below maven
 ```
 allprojects {
     repositories {
@@ -27,11 +27,13 @@ allprojects {
     }
 }
 ```
-And on build.gradle(app), add below line
+And on ```build.gradle(app)```, add below line
 ```
   implementation 'com.github.rvhamed:scaling-recyclerview:v1.0.0-beta.1'
 ```
-FINISH :)
+__FINISH ;)__
+
+---
 
 ## How to use?
 
