@@ -14,7 +14,7 @@ __Note:__ for use it you most migrate your project to [AndroidX](https://develop
 __you can add snap feature to your S.R.V. with setSnap(true)__
 
 
-
+---
 
 ## How to add?
 
@@ -37,7 +37,7 @@ __FINISH ;)__
 
 ## How to use?
 
-Add ScalinRecyclerView to your xml file
+Add ```ScalinRecyclerView``` to your ```xml``` file
 ```
  <com.hamedrahimvand.scalingrecyclerview.ScalingRecyclerView
         android:id="@+id/src_main"
@@ -46,13 +46,17 @@ Add ScalinRecyclerView to your xml file
 
 ```
 
-After that on your java/kotlin class (this sample is kotlin)
+After that on your ```java/kotlin class``` 
+
+__Note:__ this sample is kotlin.
+
 ```
    //find and initialize
    val srcMain = findViewById<ScalingRecyclerView>(R.id.src_main)
         
 ```
-How to set adapter? How to create ScalingRecyclerModel?
+___How to set adapter? How to create ScalingRecyclerModel?___
+
 With below code you can create an object of your item with ScalingRecyclerModel. Notice these fields are optional.
 ```
     ScalingRecyclerModel.Builder()
