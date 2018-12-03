@@ -7,7 +7,7 @@ __Demo__
 ![](20181203_182931.gif)
 
 
-__```scaling-recyclerview``` developed with Kotlin and AndroidX. __
+__``scaling-recyclerview ``` developed with Kotlin and AndroidX.__
 
 __Note:__ for use it you most migrate your project to [AndroidX](https://developer.android.com/jetpack/androidx/migrate).
 
@@ -83,7 +83,8 @@ __Note:__ Remember for use Glide to load images you need to set Internet Permiss
 <uses-permission android:name="android.permission.INTERNET"/>
 
 ```
-cool All was this ;)
+
+cool It was all that ;)
 
 __You can Fork it and Development it :)__
 
