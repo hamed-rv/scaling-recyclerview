@@ -2,6 +2,10 @@
 
 Hi, this library developed with Kotlin and AndroidX. for use it you most migrate your project to AndroidX or do some little change in your manifest.If you do not migrate to AndroidX, studio tell you whats you need to edit manifest and use it.
 
+> you can add snap feature to your S.R.V. with setSnap(true)
+
+![](20181203_182931.gif)
+
 ## How to add?
 
 First of all change build.gradle(project), add below maven
