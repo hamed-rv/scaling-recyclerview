@@ -57,7 +57,7 @@ __Note:__ this sample is kotlin.
 ```
 ___How to set adapter? How to create ScalingRecyclerModel?___
 
-With below code you can create an object of your item with ScalingRecyclerModel. Notice these fields are optional.
+With below code you can create an object of your item with ```ScalingRecyclerModel```. Notice these fields are optional.
 ```
     ScalingRecyclerModel.Builder()
                 .firstTitle("Hamed" /*item primary text*/)  
@@ -67,7 +67,7 @@ With below code you can create an object of your item with ScalingRecyclerModel.
                 .build()
 
 ```
-Create ArrayList of ScalingRecyclerModel and setAdapter
+Create ```ArrayList``` of ```ScalingRecyclerModel``` and setAdapter
 
 ```
    srcMain.setAdapter(srmList)
@@ -77,13 +77,17 @@ At least  you can add snap feature with
 ```
 srcMain.setSnap(true)
 ```
-> Notice: Remember for use Glide to load images you need to set Internet Permission in manifest
+
+__Note:__ Remember for use Glide to load images you need to set Internet Permission in manifest
 ```
 <uses-permission android:name="android.permission.INTERNET"/>
 
 ```
-It's good. 
+cool All was this ;)
 
+__You can Fork it and Development it :)__
+
+---
 
 ## Methods
 
