@@ -1,6 +1,6 @@
 # scaling-recyclerview
 
-Hi, this library developed with Kotlin and AndroidX. for use it you most migrate your project to AndroidX ro do some little change in your manifest.If you do not migrate to AndroidX, studio tell you whats you need to edit manifest and use it.
+Hi, this library developed with Kotlin and AndroidX. for use it you most migrate your project to AndroidX or do some little change in your manifest.If you do not migrate to AndroidX, studio tell you whats you need to edit manifest and use it.
 
 ## How to add?
 
@@ -56,6 +56,11 @@ Create ArrayList of ScalingRecyclerModel and setAdapter
 At least  you can add snap feature with
 ```
 srcMain.setSnap(true)
+```
+> Notice: Remember for use Glide to load images you need to set Internet Permission in manifest
+```
+<uses-permission android:name="android.permission.INTERNET"/>
+
 ```
 It's good. 
 
