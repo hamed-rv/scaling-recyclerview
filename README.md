@@ -71,16 +71,16 @@ It's good.
 
 ## Methods
 
-- srcMain.setAdapter(srmList)
-- srcMain.setSnap(boolean)
-- srcMain.setLayoutOrientation(RecyclerView.VERTICAL/HORIZONTAL)
-- srcMain.addItem(srm)
-- srcMain.addItem(srmList)
-- srcMain.setFirstTitleTextAppearance(styleResId)
-- srcMain.setSecondTitleTextAppearance(styleResId)
-- srcMain.setFirstLayoutBackground(resId)
-- srcMain.setSecondLayoutBackground(resId)
-- srcMain.setThirdLayoutBackground(resId)
+- ```srcMain.setAdapter(srmList)```
+- ```srcMain.setSnap(boolean)```
+- ```srcMain.setLayoutOrientation(RecyclerView.VERTICAL/HORIZONTAL)```
+- ```srcMain.addItem(srm)```
+- ```srcMain.addItem(srmList)```
+- ```srcMain.setFirstTitleTextAppearance(styleResId)```
+- ```srcMain.setSecondTitleTextAppearance(styleResId)```
+- ```srcMain.setFirstLayoutBackground(resId)```
+- ```srcMain.setSecondLayoutBackground(resId)```
+- ```srcMain.setThirdLayoutBackground(resId)```
 
 
 
