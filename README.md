@@ -32,10 +32,48 @@ Add ScalinRecyclerView to your xml file
 
 After that on your java/kotlin class (this sample is kotlin)
 ```
-        //find and initialize
-        val srcMain = findViewById<ScalingRecyclerView>(R.id.src_main)
-        
+   //find and initialize
+   val srcMain = findViewById<ScalingRecyclerView>(R.id.src_main)
         
 ```
+How to set adapter? How to create ScalingRecyclerModel?
+With below code you can create an object of your item with ScalingRecyclerModel. Notice these fields are optional.
+```
+    ScalingRecyclerModel.Builder()
+                .firstTitle("Hamed" /*item primary text*/)  
+                .secondTitle("120 Score" /*item secondry text*/)
+                .imageUrl("http://myImageUrl.com/.../hamed.jpg"  /*item image url*/) 
+                .visibility(View.VISIBLE)
+                .build()
+
+```
+Create ArrayList of ScalingRecyclerModel and setAdapter
+
+```
+   srcMain.setAdapter(srmList)
+
+```
+At least  you can add snap feature with
+```
+srcMain.setSnap(true)
+```
+It's good. 
+
+
+## Methods
+
+- srcMain.setAdapter(srmList)
+- srcMain.setSnap(boolean)
+- srcMain.setLayoutOrientation(RecyclerView.VERTICAL/HORIZONTAL)
+- srcMain.addItem(srm)
+- srcMain.addItem(srmList)
+- srcMain.setFirstTitleTextAppearance(styleResId)
+- srcMain.setSecondTitleTextAppearance(styleResId)
+- srcMain.setFirstLayoutBackground(resId)
+- srcMain.setSecondLayoutBackground(resId)
+- srcMain.setThirdLayoutBackground(resId)
+
+
+
 
         
