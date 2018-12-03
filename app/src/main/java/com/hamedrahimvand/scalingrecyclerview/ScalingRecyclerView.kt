@@ -3,6 +3,8 @@ package com.hamedrahimvand.scalingrecyclerview
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.View
+import androidx.annotation.DrawableRes
 import androidx.annotation.StyleRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -25,10 +27,11 @@ class ScalingRecyclerView(context: Context, attributeSet: AttributeSet?, defStyl
     /**
      * @see snapHelper
      */
-    var isSnap: Boolean = true
-        set(isSnap) {
-            snapHelper(isSnap)
-        }
+    fun setSnap(isSnap: Boolean){
+        snapHelper(isSnap)
+    }
+
+
 
     init {
         inflate(context, R.layout.scailing_recyclerview, this)
@@ -42,7 +45,7 @@ class ScalingRecyclerView(context: Context, attributeSet: AttributeSet?, defStyl
         recyclerView = findViewById(R.id.rcv_scaling)
         recyclerView.setHasFixedSize(true)
 
-        setLayoutManager()
+        setLayoutOrientation(RecyclerView.HORIZONTAL)
     }
 
     /**
@@ -50,7 +53,6 @@ class ScalingRecyclerView(context: Context, attributeSet: AttributeSet?, defStyl
      * @see isSnap by default is "false", developer can enable snap feature by set it true
      */
     private fun snapHelper(isSnap: Boolean) {
-        this.isSnap = isSnap
         if (isSnap) {
             val topSnapHelper = LinearSnapHelper()
             topSnapHelper.attachToRecyclerView(recyclerView)
@@ -60,9 +62,10 @@ class ScalingRecyclerView(context: Context, attributeSet: AttributeSet?, defStyl
     /**
      * set custom ScalingLayoutManager that extended of LinearLayoutManager to recyclerView
      * @see ScalingLayoutManager
+     * @param orientation Is ScalingRecyclerViw orientation, default value is RecyclerView#HORIZONTAL
      */
-    private fun setLayoutManager() {
-        recyclerView.layoutManager = ScalingLayoutManager(context, RecyclerView.HORIZONTAL, false)
+    fun setLayoutOrientation(@RecyclerView.Orientation orientation : Int) {
+        recyclerView.layoutManager = ScalingLayoutManager(context, orientation, false)
     }
 
 
@@ -72,10 +75,13 @@ class ScalingRecyclerView(context: Context, attributeSet: AttributeSet?, defStyl
      */
     fun setAdapter(scalingRecyclerList: ArrayList<ScalingRecyclerModel>) {
         //just for fix snap for first and last item
-        scalingRecyclerList.add(0, ScalingRecyclerModel.Builder().build())
         scalingRecyclerList.add(
-            scalingRecyclerList.size + 1,
-            ScalingRecyclerModel.Builder().build()
+            0,
+            ScalingRecyclerModel.Builder().visibility(View.INVISIBLE).build()
+        )
+        scalingRecyclerList.add(
+            scalingRecyclerList.size,
+            ScalingRecyclerModel.Builder().visibility(View.INVISIBLE).build()
         )
 
         //initialize list and adapter
@@ -85,18 +91,18 @@ class ScalingRecyclerView(context: Context, attributeSet: AttributeSet?, defStyl
 
     }
 
-    fun addItemToTop(item: ScalingRecyclerModel) {
+    fun addItem(item: ScalingRecyclerModel) {
         if (this::scalingRecyclerAdapter.isInitialized && this::scalingRecyclerModelScoreList.isInitialized) {
-            scalingRecyclerModelScoreList.add(item)
+            scalingRecyclerModelScoreList.add(scalingRecyclerModelScoreList.size-1,item)
             scalingRecyclerAdapter.notifyItemInserted(scalingRecyclerModelScoreList.size)
         } else {
             throw NullPointerException("ScalingAdapter can not be null, at first call setAdapter")
         }
     }
 
-    fun addItemToTop(items: ArrayList<ScalingRecyclerModel>) {
+    fun addItem(items: ArrayList<ScalingRecyclerModel>) {
         if (this::scalingRecyclerAdapter.isInitialized && this::scalingRecyclerModelScoreList.isInitialized) {
-            scalingRecyclerModelScoreList.addAll(items)
+            scalingRecyclerModelScoreList.addAll(scalingRecyclerModelScoreList.size-1,items)
             scalingRecyclerAdapter.notifyItemInserted(scalingRecyclerModelScoreList.size)
         } else {
             throw NullPointerException("ScalingAdapter can not be null, at first call setAdapter")
@@ -120,13 +126,25 @@ class ScalingRecyclerView(context: Context, attributeSet: AttributeSet?, defStyl
     /**
      * @param resourceId TextAppearance resource id
      */
-    fun setFirstTitleTextAppearance(@StyleRes resourceId : Int){
+    fun setFirstTitleTextAppearance(@StyleRes resourceId: Int) {
         scalingRecyclerAdapter.firstTitleTextAppearance = resourceId
     }
+
     /**
      * @param resourceId TextAppearance resource id
      */
-    fun setSecondTitleTextAppearance(@StyleRes resourceId : Int){
+    fun setSecondTitleTextAppearance(@StyleRes resourceId: Int) {
         scalingRecyclerAdapter.secondTitleTextAppearance = resourceId
     }
+
+    fun setFirstLayoutBackground(@DrawableRes resId:Int){
+        scalingRecyclerAdapter.firstLayoutBackgroundDrawable = resId
+    }
+    fun setSecondLayoutBackground(@DrawableRes resId:Int){
+        scalingRecyclerAdapter.secondLayoutBackgroundDrawable = resId
+    }
+    fun setThirdLayoutBackground(@DrawableRes resId:Int){
+        scalingRecyclerAdapter.thirdLayoutBackgroundDrawable = resId
+    }
+
 }

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -19,6 +20,7 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget
 import com.hamedrahimvand.scalingrecyclerview.utils.ConverterUtils
 import com.hamedrahimvand.scalingrecyclerview.R
 import com.hamedrahimvand.scalingrecyclerview.model.ScalingRecyclerModel
+import kotlinx.android.synthetic.main.item_scaling_recyclerview.view.*
 
 /**
  * Created By Hamed Rahimvand on 3 December 2018
@@ -40,18 +42,62 @@ class ScalingRecyclerAdapter(val context: Context, val dataList: ArrayList<Scali
     var onErrorDrawable: Drawable? = null
     var firstTitleTextAppearance: Int? = null
     var secondTitleTextAppearance: Int? = null
+    @DrawableRes var firstLayoutBackgroundDrawable: Int? = null
+    @DrawableRes var secondLayoutBackgroundDrawable: Int? = null
+    @DrawableRes var thirdLayoutBackgroundDrawable: Int? = null
+
     override fun getItemCount(): Int {
         return dataList.size
     }
 
-    @Suppress("DEPRECATION")
     override fun onBindViewHolder(holder: ScalingRecyclerViewHolder, position: Int) {
         val itemData = dataList[holder.adapterPosition]
 
         if (itemData.visibility != null) holder.colParent.visibility = itemData.visibility
         holder.txvFirstTitle.text = itemData.firstTitle
         holder.txvSecondTitle.text = itemData.secondTitle
+        setAppearance(holder)
+        setDrawable(holder)
+        //load images with glide
+        if (itemData.imageUrl != null) {
+            loadGlide(
+                itemData.imageUrl,
+                holder.imv,
+                placeHolderDrawable,
+                onErrorDrawable,
+                imgWidth,
+                imgHeight
+            )
+        }
 
+        //cut first and last item just for fix, the first and last item
+        //dynamically imported to list
+        if (position == 0 || position == dataList.size - 1) {
+            holder.colParent.layoutParams.width = ConverterUtils.dpToPx(60f).toInt()
+            holder.colParent.layoutParams.height = ConverterUtils.dpToPx(60f).toInt()
+        } else {
+            holder.colParent.layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT
+            holder.colParent.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
+        }
+
+        //scale item for first time
+        firstTime(position, holder)
+    }
+
+    private fun setDrawable(holder: ScalingRecyclerViewHolder) {
+        if (firstLayoutBackgroundDrawable != null) {
+            holder.frlFirstLayout.setBackgroundResource(firstLayoutBackgroundDrawable!!)
+        }
+        if (secondLayoutBackgroundDrawable != null) {
+            holder.frlSecondLayout.setBackgroundResource(secondLayoutBackgroundDrawable!!)
+        }
+        if (thirdLayoutBackgroundDrawable != null) {
+            holder.frlThirdLayout.setBackgroundResource(thirdLayoutBackgroundDrawable!!)
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun setAppearance(holder: ScalingRecyclerViewHolder) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (secondTitleTextAppearance != null) {
                 holder.txvSecondTitle.setTextAppearance(secondTitleTextAppearance!!)
@@ -67,26 +113,9 @@ class ScalingRecyclerAdapter(val context: Context, val dataList: ArrayList<Scali
                 holder.txvFirstTitle.setTextAppearance(context, firstTitleTextAppearance!!)
             }
         }
+    }
 
-        //load images with glide
-        loadGlide(
-            itemData.imageUrl!!,
-            holder.img,
-            placeHolderDrawable,
-            onErrorDrawable,
-            imgWidth,
-            imgHeight
-        )
-
-        //cut first and last item just for fix, the first and last item
-        //dynamically imported to list
-        if (position == 0 || position == dataList.size - 1) {
-            holder.colParent.layoutParams.width = ConverterUtils.dpToPx(60f).toInt()
-        } else {
-            holder.colParent.layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT
-        }
-
-        //scale item for first time
+    private fun firstTime(position: Int, holder: ScalingRecyclerViewHolder) {
         if (firstTime) {
             if (position == 1) {
                 holder.frlSecondLayout.scaleX = 1.2f
@@ -105,7 +134,6 @@ class ScalingRecyclerAdapter(val context: Context, val dataList: ArrayList<Scali
             }
         }
     }
-
 
     /**
      * Load image from url, after load,images will override size.
@@ -144,9 +172,10 @@ class ScalingRecyclerAdapter(val context: Context, val dataList: ArrayList<Scali
     class ScalingRecyclerViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val colParent =
             itemView.findViewById<ConstraintLayout>(R.id.col_parent)!!
-        val img = itemView.findViewById<AppCompatImageView>(R.id.imv_cardImage)!!
+        val imv = itemView.findViewById<AppCompatImageView>(R.id.imv_cardImage)!!
         val txvFirstTitle = itemView.findViewById<AppCompatTextView>(R.id.txv_cardFirstTitle)!!
         val txvSecondTitle = itemView.findViewById<AppCompatTextView>(R.id.txv_cardSecondTitle)!!
+        val frlFirstLayout = itemView.findViewById<FrameLayout>(R.id.frl_firstLayout)!!
         val frlSecondLayout = itemView.findViewById<FrameLayout>(R.id.frl_secondLayout)!!
         val frlThirdLayout = itemView.findViewById<FrameLayout>(R.id.frl_thirdLayout)!!
     }
