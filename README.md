@@ -1,10 +1,20 @@
 # scaling-recyclerview
 
-Hi, this library developed with Kotlin and AndroidX. for use it you most migrate your project to AndroidX or do some little change in your manifest.If you do not migrate to AndroidX, studio tell you whats you need to edit manifest and use it.
 
-> you can add snap feature to your S.R.V. with setSnap(true)
+__Demo__
+
 
 ![](20181203_182931.gif)
+
+
+***scaling-recyclerview*** developed with Kotlin and AndroidX. 
+
+__Note:__ for use it you most migrate your project to [AndroidX](https://developer.android.com/jetpack/androidx/migrate).
+
+__you can add snap feature to your S.R.V. with setSnap(true)__
+
+
+
 
 ## How to add?
 
