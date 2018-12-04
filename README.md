@@ -1,7 +1,7 @@
 # scaling-recyclerview
 
 
-__Demo
+__Demo__
 
 
 ![](20181203_182931.gif)
