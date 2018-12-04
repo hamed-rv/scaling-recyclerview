@@ -49,6 +49,8 @@ Add ```ScalinRecyclerView``` to your ```xml``` file
 After that on your ```java/kotlin class``` 
 
 __Note:__ this sample is with [kotlin](http://kotlinlang.org/).
+=======
+
 
 ```
    //find and initialize
@@ -62,7 +64,7 @@ With below code you can create an object of your item with ```ScalingRecyclerMod
     ScalingRecyclerModel.Builder()
                 .firstTitle("Hamed" /*item primary text*/)  
                 .secondTitle("120 Score" /*item secondry text*/)
-                .imageUrl("http://myImageUrl.com/.../hamed.jpg"  /*item image url*/) 
+                .imageUrl("http://myImageUrl.com/.../hamed.jpg"  /*item image url*/)
                 .visibility(View.VISIBLE)
                 .build()
 
