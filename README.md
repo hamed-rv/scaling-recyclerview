@@ -1,4 +1,4 @@
-# scaling-recyclerview
+# Scaling Recyclerview
 
 
 __Demo__
