@@ -48,7 +48,7 @@ Add ```ScalinRecyclerView``` to your ```xml``` file
 
 After that on your ```java/kotlin class``` 
 
-__Note:__ this sample is kotlin.
+__Note:__ this sample is with [kotlin](http://kotlinlang.org/).
 
 ```
    //find and initialize
